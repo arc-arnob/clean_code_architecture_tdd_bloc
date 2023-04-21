@@ -1,6 +1,8 @@
 # clean_code_architecture_tdd_bloc
 Flutter Clean Code Architecture Intro project
 Clean Code Architecture: https://www.freecodecamp.org/news/a-quick-introduction-to-clean-architecture-990c014448d2/
+# Architecture used in this code base
+![code_architecture](https://raw.githubusercontent.com/ResoCoder/flutter-tdd-clean-architecture-course/master/architecture-proposal.png)
 # Clean Code Architecture
 ### 1. ![alt](https://cdn-media-1.freecodecamp.org/images/oVVbTLR5gXHgP8Ehlz1qzRm5LLjX9kv2Zri6)
 ### 2. ![alt](https://cdn-media-1.freecodecamp.org/images/YsN6twE3-4Q4OYpgxoModmx29I8zthQ3f0OR)
