@@ -1,6 +1,6 @@
 # clean_code_architecture_tdd_bloc
 Flutter Clean Code Architecture Intro project
-
+Clean Code Architecture: https://www.freecodecamp.org/news/a-quick-introduction-to-clean-architecture-990c014448d2/
 # clean_code_architecture_tdd
 
 # Folder Structure
