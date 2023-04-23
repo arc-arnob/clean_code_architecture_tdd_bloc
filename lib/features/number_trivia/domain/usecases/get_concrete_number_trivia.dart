@@ -4,10 +4,11 @@ import 'package:clean_code_architecture_tdd/features/number_trivia/domain/entiti
 import 'package:clean_code_architecture_tdd/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 
 class GetConcreteNumberTrivia implements UseCase<NumberTrivia, Params> {
+  // Whats this? We got Repository here
   final NumberTriviaRepository repository;
+  // Then what? why do we need to pass the repository to the class's constructor
   GetConcreteNumberTrivia(this.repository);
 
   @override
