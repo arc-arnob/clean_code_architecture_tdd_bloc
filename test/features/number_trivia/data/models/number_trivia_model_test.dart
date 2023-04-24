@@ -4,10 +4,10 @@ import 'package:clean_code_architecture_tdd/features/number_trivia/data/models/n
 import 'package:clean_code_architecture_tdd/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../../core/fixtures/fixture_reader.dart';
+import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
-  final tNumberTriviaModel = NumberTriviaModel(number: 1, text: 'test text');
+  final tNumberTriviaModel = NumberTriviaModel(number: 1, text: 'Test text');
 
   test(
     'should be a subclass of NumberTrivia entity',

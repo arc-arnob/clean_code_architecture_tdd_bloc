@@ -5,25 +5,29 @@ import 'package:clean_code_architecture_tdd/features/number_trivia/data/models/n
 import 'package:clean_code_architecture_tdd/features/number_trivia/data/repositories/number_trivia_repository_impl.dart';
 import 'package:clean_code_architecture_tdd/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:mockito/mockito.dart';
+import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class MockRemoteDataSource extends Mock
-    implements NumberTriviaRemoteDataSource {}
+import 'number_trivia_repository_impl_test.mocks.dart';
 
-class MockLocalDataSource extends Mock implements NumberTriviaLocalDataSource {}
+// class MockRemoteDataSource extends Mock
+//     implements NumberTriviaRemoteDataSource {}
 
-class MockNetworkInfo extends Mock implements NetworkInfo {}
+// class MockLocalDataSource extends Mock implements NumberTriviaLocalDataSource {}
 
-
+// class MockNetworkInfo extends Mock implements NetworkInfo {}
+@GenerateNiceMocks([MockSpec<NumberTriviaRemoteDataSource>()])
+@GenerateNiceMocks([MockSpec<NumberTriviaLocalDataSource>()])
+@GenerateNiceMocks([MockSpec<NetworkInfo>()])
 void main() {
   late NumberTriviaRepositoryImplementation repository;
-  late MockRemoteDataSource mockRemoteDataSource;
-  late MockLocalDataSource mockLocalDataSource;
+  late MockNumberTriviaRemoteDataSource mockRemoteDataSource;
+  late MockNumberTriviaLocalDataSource mockLocalDataSource;
   late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
-    mockRemoteDataSource = MockRemoteDataSource();
-    mockLocalDataSource = MockLocalDataSource();
+    mockRemoteDataSource = MockNumberTriviaRemoteDataSource();
+    mockLocalDataSource = MockNumberTriviaLocalDataSource();
     mockNetworkInfo = MockNetworkInfo();
     repository = NumberTriviaRepositoryImplementation(
       remoteDataSource: mockRemoteDataSource,
@@ -31,6 +35,7 @@ void main() {
       networkInfo: mockNetworkInfo,
     );
   });
+
   void runTestsOnline(Function body) {
     group('device is online', () {
       setUp(() {
@@ -64,7 +69,7 @@ void main() {
       // assert
       verify(mockNetworkInfo.isConnected);
     });
-    
+
     runTestsOnline(() {
       test(
           'should return remote data when the call to remote data source is successful',
