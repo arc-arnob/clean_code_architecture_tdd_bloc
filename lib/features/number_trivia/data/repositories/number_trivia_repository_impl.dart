@@ -1,3 +1,4 @@
+import 'package:clean_code_architecture_tdd/core/error/exceptions.dart';
 import 'package:clean_code_architecture_tdd/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:clean_code_architecture_tdd/core/error/faliures.dart';
 import 'package:clean_code_architecture_tdd/features/number_trivia/domain/repositories/number_trivia_repository.dart';
@@ -17,14 +18,43 @@ class NumberTriviaRepositoryImplementation implements NumberTriviaRepository {
   });
 
   @override
-  Future<Either<Faliure, NumberTrivia>> getConcreteNumberTrivia(int number) {
-    networkInfo.isConnected;
-    throw UnimplementedError();
+  Future<Either<Faliure, NumberTrivia>> getConcreteNumberTrivia(
+    int number,
+  ) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteTrivia =
+            await remoteDataSource.getConcreteNumberTrivia(number);
+        localDataSource.cacheNumberTrivia(remoteTrivia);
+        return Right(remoteTrivia);
+      } on ServerException {
+        return Left(ServerFaliure());
+      }
+    } else {
+      try {
+        return Right(await localDataSource.getLastNumberTrivia());
+      } on CacheException {
+        return Left(CacheFaliure());
+      }
+    }
   }
 
   @override
-  Future<Either<Faliure, NumberTrivia>> getRandomNumberTrivia() {
-    // TODO: implement getRandomNumberTrivia
-    throw UnimplementedError();
+  Future<Either<Faliure, NumberTrivia>> getRandomNumberTrivia() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteTrivia = await remoteDataSource.getRandomNumberTrivia();
+        localDataSource.cacheNumberTrivia(remoteTrivia);
+        return Right(remoteTrivia);
+      } on ServerException {
+        return Left(ServerFaliure());
+      }
+    } else {
+      try {
+        return Right(await localDataSource.getLastNumberTrivia());
+      } on CacheException {
+        return Left(CacheFaliure());
+      }
+    }
   }
 }
