@@ -3,14 +3,19 @@ import 'package:clean_code_architecture_tdd/features/number_trivia/domain/reposi
 import 'package:clean_code_architecture_tdd/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
+import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class MockNumberTriviaRepository extends Mock
-    implements NumberTriviaRepository {}
+import 'get_concrete_number_test.mocks.dart';
 
+// Old way wont wont, use mockito Generators
+// class MockNumberTriviaRepository extends Mock
+//     implements NumberTriviaRepository {}
+
+@GenerateNiceMocks([MockSpec<NumberTriviaRepository>()])
 void main() {
   GetConcreteNumberTrivia usecase;
-  MockNumberTriviaRepository mockNumberTriviaRepository;
+  late MockNumberTriviaRepository mockNumberTriviaRepository;
   setUp(() {
     mockNumberTriviaRepository = MockNumberTriviaRepository();
     usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
@@ -21,7 +26,7 @@ void main() {
   test('should', () async {
     // arrange
     mockNumberTriviaRepository = MockNumberTriviaRepository();
-    when(mockNumberTriviaRepository.getConcreteNumberTrivia(2))
+    when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
         .thenAnswer((_) async => Right(tNumberTrivia));
     // act
     usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);

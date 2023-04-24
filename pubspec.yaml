@@ -15,26 +15,22 @@ dependencies:
   # Service locator
   get_it: ^3.1.0
   # Bloc for state management
-  flutter_bloc: ^3.0.0
+  flutter_bloc: ^8.1.2
   # Value equality
-  equatable: ^2.0.3
+  equatable: ^2.0.5
   # Functional programming thingies
   dartz: ^0.10.1
   # Remote API
   data_connection_checker: ^0.3.4
-  http: ^0.12.0+3
+  http: ^0.13.5
   # Local cache
-  shared_preferences: ^0.5.6
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  mockito: ^5.4.0
+  shared_preferences: ^2.0.18
+  build_runner: ^2.3.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.3.2
  
   flutter_lints: ^2.0.0
 flutter:

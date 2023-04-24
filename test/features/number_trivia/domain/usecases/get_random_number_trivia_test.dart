@@ -4,11 +4,13 @@ import 'package:clean_code_architecture_tdd/features/number_trivia/domain/reposi
 import 'package:clean_code_architecture_tdd/features/number_trivia/domain/usecases/get_random_number_trivia.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
+import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class MockNumberTriviaRepository extends Mock
-    implements NumberTriviaRepository {}
-
+import 'get_random_number_trivia_test.mocks.dart';
+// class MockNumberTriviaRepository extends Mock
+//     implements NumberTriviaRepository {}
+@GenerateNiceMocks([MockSpec<NumberTriviaRepository>()])
 void main() {
   GetRandomNumberTrivia usecase;
   MockNumberTriviaRepository mockNumberTriviaRepository;
