@@ -1,6 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 abstract class Faliure extends Equatable {
-  Faliure([List properties = const <dynamic>[]]);
-  // TODO: Pass properties to Equatable
+  final List properties = const <dynamic>[];
+  Faliure([properties]);
+  @override
+  List<Object> get props => [properties];
 }
+
+// General faliures
+class ServerFaliure extends Faliure {}
+
+class CacheFaliure extends Faliure {}
