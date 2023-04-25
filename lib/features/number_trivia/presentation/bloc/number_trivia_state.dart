@@ -1,7 +1,10 @@
 part of 'number_trivia_bloc.dart';
 
 @immutable
-abstract class NumberTriviaState {}
+abstract class NumberTriviaState extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
 class Empty extends NumberTriviaState {}
 
