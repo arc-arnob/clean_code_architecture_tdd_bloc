@@ -4,7 +4,7 @@ import 'package:clean_code_architecture_tdd/features/number_trivia/domain/entiti
 import 'package:clean_code_architecture_tdd/core/error/faliures.dart';
 import 'package:clean_code_architecture_tdd/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 import 'package:dartz/dartz.dart';
-import '../../../../core/platform/network_info.dart';
+import '../../../../core/network/network_info.dart';
 import '../datasources/number_trivia_local_datsource.dart';
 import '../datasources/number_trivia_remote_datasource.dart';
 
