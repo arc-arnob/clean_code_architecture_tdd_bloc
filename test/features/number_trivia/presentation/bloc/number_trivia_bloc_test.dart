@@ -67,5 +67,17 @@ void main() {
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
     );
+
+    test('should get data from concrete usecase', () async {
+      when(mockInputConverter.stringToUnsignedInteger(any))
+          .thenReturn(Right(tNumberParsed));
+      when(mockGetConcreteNumberTrivia(any))
+          .thenAnswer((_) async => Right(tNumberTrivia));
+
+      // act
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
+      await untilCalled(mockGetConcreteNumberTrivia(any));
+      verify(mockGetConcreteNumberTrivia(Params(number: tNumberParsed)));
+    });
   });
 }
