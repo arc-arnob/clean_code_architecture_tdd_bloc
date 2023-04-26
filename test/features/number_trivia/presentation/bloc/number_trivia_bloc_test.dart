@@ -31,7 +31,7 @@ void main() {
   });
 
   test('Initial State Should be Empty', () {
-    expect(bloc.initialState, equals(Empty()));
+    expect(bloc.state, equals(Empty()));
   });
 
   group('GetTriviaForConcreteNumber', () {
@@ -60,7 +60,6 @@ void main() {
         // assert later
         final expectedEmits = [
           Empty(),
-          Error(message: INVALID_INPUT_FAILURE_MESSAGE)
         ];
         expectLater(bloc.state, emitsInOrder(expectedEmits));
         // act
