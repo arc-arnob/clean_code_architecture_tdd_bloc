@@ -26,10 +26,10 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
     required this.getRandomNumberTrivia,
     required this.inputConverter,
   }) : super(Empty()) {
-    on<GetTriviaForConcreteNumber>((_passTestCase));
+    on<GetTriviaForConcreteNumber>((_getTriviaForConcreteNumber));
   }
 
-  void _passTestCase(
+  void _getTriviaForConcreteNumber(
       GetTriviaForConcreteNumber event, Emitter<NumberTriviaState> emit) {
     // final inputEither =
     final inputEither =
