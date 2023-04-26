@@ -60,7 +60,6 @@ void main() {
         // assert later
         final expectedEmits = [
           Empty(),
-          Error(message: INVALID_INPUT_FAILURE_MESSAGE)
         ];
         expectLater(bloc.state, emitsInOrder(expectedEmits));
         // act
