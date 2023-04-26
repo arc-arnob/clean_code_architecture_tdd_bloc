@@ -31,7 +31,7 @@ void main() {
   });
 
   test('Initial State Should be Empty', () {
-    expect(bloc.initialState, equals(Empty()));
+    expect(bloc.state, equals(Empty()));
   });
 
   group('GetTriviaForConcreteNumber', () {
