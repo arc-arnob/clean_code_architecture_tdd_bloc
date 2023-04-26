@@ -32,9 +32,9 @@ Clean Code Architecture: https://www.freecodecamp.org/news/a-quick-introduction-
     2. Repositories: Contracts(abstract classes) is defined in `Domain`, knowing that the actual implementation of the Repository in the `Data` layer will fullfill this contract.
     3. Usecases: Containes only business logics
 3. Data:
-    1. Datasources: this one is usually for getting remote (API) data and the other for caching that data. Here we have remote datasource and local datasource
+    1. Datasources: this one is usually for getting remote (API) data and the other for caching that data. Here we have remote datasource and local datasource. In Simple terms this is the API of your application
     2. Models: This is that transforming raw data (e.g JSON) into Dart objects requires some JSON conversion code. We create Model classes which extend `Entities` and add some specific functionality (toJson, fromJson) or additional fields, like database ID, for example. Simple words, Blueprint of the data our app will work with
-    3. Repositories: Repository implementation (the contract comes from the `Domain` layer)
+    3. Repositories: Repository implementation (the contract comes from the `Domain` layer). This is a place to even fine tune the data, i.e filter, sort, clean and all last moment changes before sending data to business logic layer
 4. Presentation: 
     1. Bloc: TODO
     2. Pages: TODO
