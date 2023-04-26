@@ -1,12 +1,3 @@
-// import 'package:clean_code_architecture_tdd/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
-// import 'package:clean_code_architecture_tdd/features/number_trivia/domain/usecases/get_random_number_trivia.dart';
-// import 'package:clean_code_architecture_tdd/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
-// // ignore: import_of_legacy_library_into_null_safe
-// import 'package:get_it/get_it.dart';
-// import 'core/network/network_info.dart';
-// import 'core/utils/input_converter.dart';
-// import 'features/number_trivia/domain/repositories/number_trivia_repository.dart';
-
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:data_connection_checker/data_connection_checker.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -28,7 +19,7 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   //! Features - Number Trivia
-  // Bloc
+  //! Bloc
   sl.registerFactory(
     () => NumberTriviaBloc(
       getConcreteNumberTrivia: sl(),
@@ -37,11 +28,11 @@ Future<void> init() async {
     ),
   );
 
-  // Use cases
+  //! Use cases
   sl.registerLazySingleton(() => GetConcreteNumberTrivia(sl()));
   sl.registerLazySingleton(() => GetRandomNumberTrivia(sl()));
 
-  // Repository
+  //! Repository
   sl.registerLazySingleton<NumberTriviaRepository>(
     () => NumberTriviaRepositoryImplementation(
       localDataSource: sl(),
@@ -50,7 +41,7 @@ Future<void> init() async {
     ),
   );
 
-  // Data sources
+  //! Data sources
   sl.registerLazySingleton<NumberTriviaRemoteDataSource>(
     () => NumberTriviaRemoteDataSourceImpl(client: sl()),
   );
