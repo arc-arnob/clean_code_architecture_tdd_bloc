@@ -27,7 +27,6 @@ dependencies:
   shared_preferences: ^2.0.18
   build_runner: ^2.3.3
   connectivity_plus: ^3.0.4
-  data_connection_checker_nulls: ^0.0.2
 
 dev_dependencies:
   flutter_test:
