@@ -77,12 +77,14 @@ class TriviaControl extends StatefulWidget {
 }
 
 class _TriviaControlState extends State<TriviaControl> {
+  final controller = TextEditingController();
   late String inputStr;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         TextField(
+          controller: controller,
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
             border: OutlineInputBorder(),
@@ -122,6 +124,7 @@ class _TriviaControlState extends State<TriviaControl> {
                 ),
                 onPressed: () {
                   // Dispatch an event to the bloc
+                  dispatchRandom();
                 },
               ),
             ),
@@ -132,7 +135,15 @@ class _TriviaControlState extends State<TriviaControl> {
   }
 
   void dispatchConcrete(inputStr) {
+    controller.clear();
     BlocProvider.of<NumberTriviaBloc>(context)
         .add(GetTriviaForConcreteNumber(inputStr));
+  }
+
+  void dispatchRandom() {
+    controller.clear();
+    BlocProvider.of<NumberTriviaBloc>(context).add(
+      GetTriviaForRandomNumber(),
+    );
   }
 }
