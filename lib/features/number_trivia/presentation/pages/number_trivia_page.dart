@@ -1,8 +1,11 @@
+import 'package:clean_code_architecture_tdd/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:clean_code_architecture_tdd/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
 import 'package:clean_code_architecture_tdd/injection_container.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../widgets/widgets.dart';
 
 class NumberTriviaPage extends StatelessWidget {
   const NumberTriviaPage({super.key});
@@ -31,9 +34,23 @@ class NumberTriviaPage extends StatelessWidget {
               // Top half
               BlocBuilder<NumberTriviaBloc, NumberTriviaState>(
                 builder: (context, state) {
-                  return Container(
-                    height: MediaQuery.of(context).size.height / 3,
-                    child: Placeholder(),
+                  if (state is Empty) {
+                    return MessageDisplay(
+                      message: 'Start Searching...',
+                    );
+                  } else if (state is Loading) {
+                    return LoadingWidget();
+                  } else if (state is Loaded) {
+                    return TriviaDisplay(
+                      numberTrivia: state.trivia,
+                    );
+                  } else if (state is Error) {
+                    return MessageDisplay(
+                      message: state.message,
+                    );
+                  }
+                  return MessageDisplay(
+                    message: 'Somethings wrong...',
                   );
                 },
               ),
@@ -41,36 +58,81 @@ class NumberTriviaPage extends StatelessWidget {
                 height: 20,
               ),
               // Bottom Half
-              Column(
-                children: <Widget>[
-                  Placeholder(
-                    fallbackHeight: 40,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Placeholder(fallbackHeight: 30),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        child: Placeholder(fallbackHeight: 30),
-                      ),
-                    ],
-                  )
-                ],
-              )
+              TriviaControl()
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class TriviaControl extends StatefulWidget {
+  const TriviaControl({
+    super.key,
+  });
+
+  @override
+  State<TriviaControl> createState() => _TriviaControlState();
+}
+
+class _TriviaControlState extends State<TriviaControl> {
+  late String inputStr;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        TextField(
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: "Input a Number",
+          ),
+          onChanged: (value) {
+            inputStr = value;
+          },
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          children: <Widget>[
+            Expanded(
+                child: ElevatedButton(
+              child: Text('Search'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+              ),
+              onPressed: () {
+                // Dispatch an event to the bloc
+                dispatchConcrete(inputStr);
+              },
+            )),
+            SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: ElevatedButton(
+                child: Text('Get Random'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueGrey,
+                ),
+                onPressed: () {
+                  // Dispatch an event to the bloc
+                },
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  void dispatchConcrete(inputStr) {
+    BlocProvider.of<NumberTriviaBloc>(context)
+        .add(GetTriviaForConcreteNumber(inputStr));
   }
 }
