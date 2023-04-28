@@ -1,5 +1,6 @@
 import 'package:clean_code_architecture_tdd/core/network/network_info.dart';
-import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';

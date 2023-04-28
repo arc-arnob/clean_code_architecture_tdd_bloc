@@ -1,5 +1,6 @@
 import 'package:clean_code_architecture_tdd/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
 import 'package:clean_code_architecture_tdd/injection_container.dart';
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,14 +29,14 @@ class NumberTriviaPage extends StatelessWidget {
                 height: 10,
               ),
               // Top half
-              // BlocBuilder<NumberTriviaBloc, NumberTriviaState>(
-              //   builder: (context, state) {
-              //     return Container(
-              //       height: MediaQuery.of(context).size.height / 3,
-              //       child: Placeholder(),
-              //     );
-              //   },
-              // ),
+              BlocBuilder<NumberTriviaBloc, NumberTriviaState>(
+                builder: (context, state) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height / 3,
+                    child: Placeholder(),
+                  );
+                },
+              ),
               SizedBox(
                 height: 20,
               ),

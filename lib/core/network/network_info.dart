@@ -1,4 +1,5 @@
-import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:data_connection_checker/data_connection_checker.dart';
 
 abstract class NetworkInfo {
   Future<bool> get isConnected; // getter in dart;
