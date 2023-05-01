@@ -1,19 +1,18 @@
 import 'package:clean_code_architecture_tdd/core/network/network_info.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'network_info_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<DataConnectionChecker>()])
+@GenerateNiceMocks([MockSpec<InternetConnectionChecker>()])
 void main() {
   late NetworkInfoImpl networkInfoImpl;
-  late MockDataConnectionChecker mockDataConnectionChecker;
+  late MockInternetConnectionChecker mockDataConnectionChecker;
 
   setUp(() {
-    mockDataConnectionChecker = MockDataConnectionChecker();
+    mockDataConnectionChecker = MockInternetConnectionChecker();
     networkInfoImpl = NetworkInfoImpl(mockDataConnectionChecker);
   });
   group('isConnected', () {

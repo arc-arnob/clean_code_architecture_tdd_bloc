@@ -201,14 +201,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.10.1"
-  data_connection_checker:
-    dependency: "direct main"
-    description:
-      name: data_connection_checker
-      sha256: "1c8e544acf5ff88785967978b9ebb9f87a57eb1d19a6933b4f3a6f85dbb65163"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.4"
   dbus:
     dependency: transitive
     description:
@@ -300,10 +292,10 @@ packages:
     dependency: "direct main"
     description:
       name: get_it
-      sha256: a923c9d0acfee7f3ad9bb65c545e0a1ee0b87fef507ce88f87847d3c8f15be9c
+      sha256: f9982979e3d2f286a957c04d2c3a98f55b0f0a06ffd6c5c4abbb96f06937f463
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "7.3.0"
   glob:
     dependency: transitive
     description:
@@ -344,6 +336,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  internet_connection_checker:
+    dependency: "direct main"
+    description:
+      name: internet_connection_checker
+      sha256: "1c683e63e89c9ac66a40748b1b20889fd9804980da732bf2b58d6d5456c8e876"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+1"
   io:
     dependency: transitive
     description:

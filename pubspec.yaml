@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   # Service locator
-  get_it: ^3.1.0
+  get_it: ^7.3.0
   # Bloc for state management
   flutter_bloc: ^8.1.2
   # Value equality
@@ -21,7 +21,7 @@ dependencies:
   # Functional programming thingies
   dartz: ^0.10.1
   # Remote API
-  data_connection_checker: ^0.3.4
+  internet_connection_checker: ^1.0.0+1
   http: ^0.13.5
   # Local cache
   shared_preferences: ^2.0.18
