@@ -6,11 +6,11 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class GetConcreteNumberTrivia implements UseCase<NumberTrivia, Params> {
-  // Whats this? We got Repository here
+  // constructor takes a NumberTriviaRepository object as a parameter and assigns it to a repository
   final NumberTriviaRepository repository;
-  // Then what? why do we need to pass the repository to the class's constructor
+  // Dependency Injection
   GetConcreteNumberTrivia(this.repository);
-
+  // What is the use of call here?
   @override
   Future<Either<Faliure, NumberTrivia>> call(Params params) async {
     return await repository.getConcreteNumberTrivia(params.number);
