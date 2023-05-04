@@ -14,6 +14,7 @@ class NumberTriviaModel extends NumberTrivia {
 1. The return keyword need to be used.
 2.It does not have access to the this keyword.
  */
+// Why Map<String, dynamic>
   factory NumberTriviaModel.fromJson(Map<String, dynamic> json) {
     return NumberTriviaModel(
       text: json['text'],

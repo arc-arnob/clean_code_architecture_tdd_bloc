@@ -1,7 +1,5 @@
-import 'package:clean_code_architecture_tdd/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:clean_code_architecture_tdd/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
 import 'package:clean_code_architecture_tdd/injection_container.dart';
-import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
