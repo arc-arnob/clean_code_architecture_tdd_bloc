@@ -28,6 +28,11 @@ dependencies:
   build_runner: ^2.3.3
   connectivity_plus: ^3.0.4
 
+  # Firebase Dependecies
+  firebase_core: ^1.0.1
+  firebase_auth: ^1.0.1
+  google_sign_in: ^5.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
